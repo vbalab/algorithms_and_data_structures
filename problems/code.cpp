@@ -7,8 +7,11 @@ public:
     std::vector<int> twoSum(std::vector<int>& nums, int target) {
         std::vector<int> result;
         for(const auto& arr_value: nums) {
-            std::cout << arr_value;
+            // smth
         }
+        // smth
+
+
         return result;
     }
 };
@@ -19,12 +22,15 @@ int main() {
     std::vector<int> nums;
     std::cout << "Array of nums:" << "\n";
     while (std::cin >> input) {
+        if (input == 0) {
+            break;
+            };
         nums.push_back(input);
     }
 
 
     int target;
-    std::cout << "target value:";
+    std::cout << "target value:" << "\n";
     std::cin >> target;
 
 
