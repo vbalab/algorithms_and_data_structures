@@ -1,13 +1,15 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <map>
+#include <unordered_map>
 #include <sstream>
 
 
 template <typename T>
-void print_vector(const std::vector<T> vect) {
-    for (const auto& index : vect) {
+void print_vector(const std::vector<T> vect) 
+{
+    for (const auto& index : vect) 
+    {
         std::cout << index << " ";
     };
     std::cout << std::endl;
@@ -15,18 +17,22 @@ void print_vector(const std::vector<T> vect) {
 
 
 // O(n), since map is O(1)
-class Solution {
+class Solution 
+{
 public:
-    std::vector<int> twoSum(std::vector<int>& nums, int target) {
-        std::map<int, int> m;
-        int length { static_cast<int>(nums.size()) };            
+    std::vector<int> twoSum(std::vector<int>& nums, int target) 
+    {
+        std::unordered_map<int, int> m;
+        // int length { static_cast<int>(nums.size()) };       
 
-        for (std::size_t index{ 0 }; index < length; ++index) {
-            if (m.find(nums[index]) != m.end()) {
+        for (std::size_t index{ 0 }; index < nums.size(); ++index) 
+        {
+            if (m.find(nums[index]) != m.end()) 
+            {
                 return {m[nums[index]], static_cast<int>(index)};
             };
 
-        m[target - nums[index]] = index;
+            m[target - nums[index]] = index;
         };
 
         return {};
@@ -34,7 +40,8 @@ public:
 };
 
 
-int main() {
+int main() 
+{
     int number;
     std::vector<int> nums;
     std::string input_line;
