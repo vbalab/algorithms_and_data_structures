@@ -14,6 +14,7 @@ void print_vector(const std::vector<T> vect) {
 }
 
 
+// O(n), since map is O(1)
 class Solution {
 public:
     std::vector<int> twoSum(std::vector<int>& nums, int target) {
