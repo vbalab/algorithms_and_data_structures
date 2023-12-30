@@ -17,22 +17,18 @@ void print_vector(const std::vector<T> vect) {
 class Solution {
 public:
     std::vector<int> twoSum(std::vector<int>& nums, int target) {
-        std::vector<int> result;
-        std::map<int, int> dictionary;
+        std::map<int, int> m;
         int length { static_cast<int>(nums.size()) };            
 
         for (std::size_t index{ 0 }; index < length; ++index) {
-            if (dictionary.find(nums[index]) != dictionary.end()) {
-                result.insert(result.end(), {dictionary[nums[index]], static_cast<int>(index)});
-                break;
+            if (m.find(nums[index]) != m.end()) {
+                return {m[nums[index]], static_cast<int>(index)};
             };
 
-        dictionary[target - nums[index]] = index;
-
-        if (static_cast<int>(result.size()) > 0) break;
+        m[target - nums[index]] = index;
         };
 
-        return result;
+        return {};
         };
 };
 
