@@ -1,8 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <map> 
-#include <iterator>
+#include <map>
 #include <sstream>
 
 
@@ -51,19 +50,6 @@ int main() {
     std::istringstream stream(input_line);
     while (stream >> number)
         nums.push_back(number);
-
-
-    // std::vector<int> nums;
-    // std::int input;
-    // while (std::cin >> input) {
-    //     if (not std::isdigit(input)) break;
-
-    //     nums.push_back(input);
-    // }
-
-
-    // std::istream_iterator<int> begin(std::cin), end;
-    // std::vector<int> nums(begin, end);
 
 
     int target;
