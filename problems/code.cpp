@@ -22,14 +22,12 @@ public:
         int length { static_cast<int>(nums.size()) };            
 
         for (std::size_t index{ 0 }; index < length; ++index) {
-            for(auto const& [key, val] : dictionary) {
-                if(val + nums[index] == target) {
-                    result.insert(result.end(), {key, static_cast<int>(index)});
-                    break;
-                };
+            if (dictionary.find(nums[index]) != dictionary.end()) {
+                result.insert(result.end(), {dictionary[nums[index]], static_cast<int>(index)});
+                break;
             };
 
-        dictionary[index] = nums[index];
+        dictionary[target - nums[index]] = index;
 
         if (static_cast<int>(result.size()) > 0) break;
         };
