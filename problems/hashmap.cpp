@@ -47,4 +47,6 @@ int main()
     just_hashmap[20] = 'a';
     just_hashmap[2];            // will create key 2 with undentified value
     just_hashmap.at(1);         // will throw an error and won't create any key
+
+    return 0;
 };

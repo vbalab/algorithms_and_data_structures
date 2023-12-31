@@ -3,7 +3,7 @@
 
 // linked list - chain of elements with a pointer to the following element
 
-// head node -> node -> node -> ... -> node -> null value (to indicate the end)
+// head node -> node -> node -> ... -> node -> null pointer (to indicate the end)
 // each node has data and pointer to another node
 
 // linked list excels in incertion and deletion of nodes in O(1) in runtime; but getting to particular node - O(n)
@@ -45,15 +45,16 @@ int main()
 {
     Node* headNode = new Node;
     headNode ->data = 20;
-    headNode ->link = NULL;
+    headNode ->link = nullptr;
 
     insert_before(headNode, 30);
     insert_after(headNode ->link, 40);
 
     Node* tmp = headNode;
-    while(tmp != NULL) {
+    while(tmp != nullptr) {
         std::cout << tmp ->data << ";" << tmp << ";" << tmp ->link << "\n";
         tmp = tmp ->link;
     };
 
+    return 0;
 };
