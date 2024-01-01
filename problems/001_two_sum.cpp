@@ -16,6 +16,24 @@ void print_vector(const std::vector<T> vect)
 }
 
 
+template <typename T>
+std::vector<T> fillvector(std::vector<T> vect)
+{
+    int input;
+    std::string input_line;
+
+    std::getline(std::cin, input_line);
+    std::istringstream stream(input_line);
+
+    while (stream >> input)
+        {
+            vect.push_back(input);
+        };
+
+    return vect;
+}
+
+
 // O(n), since map is O(1)
 class Solution 
 {
@@ -44,15 +62,10 @@ int main()
 {
     int number;
     std::vector<int> nums;
-    std::string input_line;
 
     std::cout << "Array of nums: ";
-
-    std::getline(std::cin, input_line);
-    std::istringstream stream(input_line);
-    while (stream >> number)
-        nums.push_back(number);
-
+    nums = fillvector(nums);
+    print_vector(nums);
 
     int target;
     std::cout << "target value: ";
