@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 
 struct ListNode
@@ -18,49 +19,6 @@ void printll(const ListNode* tmp)
 };
 
 
-// void insert_before(ListNode*& node, int val)
-// {
-//     ListNode* tempPtr = new ListNode;
-//     tempPtr ->val = val;
-//     tempPtr ->next = node;
-
-//     node = tempPtr;
-// }
-
-
-// ListNode* linked_list_from_number(int number)
-// {
-//     ListNode* headnode = new ListNode;
-//     headnode ->next = nullptr;
-//     headnode ->val = number % 10;
-//     number = number / 10;
-
-//     ListNode* tmp = headnode;
-//     while(number > 0)
-//     {
-//         insert_before(tmp, number % 10);
-//         number = number / 10;
-
-//     };
-
-//     return tmp;
-// };
-
-
-// int reverse_digits(int number)
-// {
-//     int rev_number = 0;
-
-//     while (number > 0)
-//     {
-//         rev_number = rev_number * 10 + number % 10;
-//         number = number / 10;
-//     }
-
-//     return rev_number;
-// };
-
-
 void insert_after(ListNode*& node, int val)
 {
     ListNode* tempPtr = new ListNode;
@@ -72,7 +30,7 @@ void insert_after(ListNode*& node, int val)
 };
 
 
-ListNode* reversed_linked_list_from_number(unsigned long long number)
+ListNode* reversed_linked_list_from_number(const std::vector<int>& number)
 {
     ListNode* headnode = new ListNode;
     headnode ->next = nullptr;
@@ -90,7 +48,7 @@ ListNode* reversed_linked_list_from_number(unsigned long long number)
 }
 
 
-class Solution 
+class Solution_first
 {
     public:
         ListNode* addTwoNumbers(ListNode* l1, ListNode* l2)
@@ -102,7 +60,7 @@ class Solution
         };
 
 
-        unsigned long long get_total_reversed_number(ListNode* l)
+        std::vector<int> get_total_reversed_number(ListNode* l)
         {
             unsigned long long number = 0;
             unsigned long long mult = 1;
@@ -120,9 +78,21 @@ class Solution
 };
 
 
+class Solution_second
+{
+    public:
+        ListNode* addTwoNumbers(ListNode* l1, ListNode* l2)
+        {
+            
+
+            return headnode;
+        };
+};
+
+
 int main() 
 {
-    unsigned long long number;
+    std::vector<int> number;
     std::cin >> number;
     ListNode* headnode1 = reversed_linked_list_from_number(number);
     printll(headnode1);
@@ -147,7 +117,8 @@ int main()
     // insert_after(headnode2 ->next, 4);
 
 
-    Solution solution;
+    // Solution_first solution;
+    Solution_second solution;
     std::cout << "\nSolution: \n";
     printll(solution.addTwoNumbers(headnode1, headnode2));
 
