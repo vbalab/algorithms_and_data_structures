@@ -8,12 +8,12 @@ struct ListNode
 };
 
 
-void printll(const ListNode* tmp) 
+void printll(const ListNode* head) 
 {
-    while(tmp != nullptr) 
+    while(head != nullptr) 
     {
-        std::cout << "Value: " << tmp ->val << ", Next: " << tmp ->next << "\n";
-        tmp = tmp ->next;
+        std::cout << "Value: " << head ->val << ", Next: " << head ->next << "\n";
+        head = head ->next;
     }
 };
 
