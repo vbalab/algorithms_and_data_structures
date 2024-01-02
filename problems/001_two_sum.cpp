@@ -16,14 +16,12 @@ void print_vector(const std::vector<T> vect)
 }
 
 
-template <typename T>
-std::vector<T> fillvector(std::vector<T> vect)
+std::vector<int> fillvector(std::string input_line)
 {
-    int input;
-    std::string input_line;
+    std::vector<int> vect;
 
-    std::getline(std::cin, input_line);
     std::istringstream stream(input_line);
+    int input;
 
     while (stream >> input)
         {
@@ -61,10 +59,13 @@ public:
 int main() 
 {
     int number;
-    std::vector<int> nums;
 
     std::cout << "Array of nums: ";
-    nums = fillvector(nums);
+
+    std::string input_line;
+    std::getline(std::cin, input_line);
+
+    std::vector<int> nums = fillvector(input_line);
     print_vector(nums);
 
     int target;
