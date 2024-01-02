@@ -2,34 +2,10 @@
 #include <vector>
 #include <string>
 #include <unordered_map>
-#include <sstream>
+#include "utils.h"
 
 
-template <typename T>
-void print_vector(const std::vector<T> vect) 
-{
-    for (const auto& index : vect) 
-    {
-        std::cout << index << " ";
-    };
-    std::cout << std::endl;
-}
-
-
-std::vector<int> fillvector(std::string input_line)
-{
-    std::vector<int> vect;
-
-    std::istringstream stream(input_line);
-    int input;
-
-    while (stream >> input)
-        {
-            vect.push_back(input);
-        };
-
-    return vect;
-}
+using namespace utils;
 
 
 // O(n), since map is O(1)
@@ -65,7 +41,7 @@ int main()
     std::string input_line;
     std::getline(std::cin, input_line);
 
-    std::vector<int> nums = fillvector(input_line);
+    std::vector<int> nums = fill_vector_from_string(input_line);
     print_vector(nums);
 
     int target;
