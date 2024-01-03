@@ -4,6 +4,7 @@
 
 // Helps to solve O(nk) by O(n) + O(k)
 
+// The notion is to use result from i-th iteration to calculate for i+1 with minor changes.
 using namespace utils;
 
 template <typename T>
