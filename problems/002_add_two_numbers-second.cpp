@@ -23,7 +23,7 @@ void printll(const ListNode* head)
 };
 
 
-void insert_after(ListNode*& node, int val)
+void insert_after(ListNode*& node, const int val)
 {
     ListNode* tempPtr = new ListNode;
     tempPtr ->val = val;
