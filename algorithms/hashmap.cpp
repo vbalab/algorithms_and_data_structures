@@ -33,7 +33,6 @@ struct somestruct {
 
 int main() 
 {
-
     // 1. use pointer, because pointer - uint64_t
     std::map<somestruct*, int> hashmap_with_pointer_key;
     // hashmap_with_pointer_key[somestruct{ "lol_town" }] = 1885; ????????????????
