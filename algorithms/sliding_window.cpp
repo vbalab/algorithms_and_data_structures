@@ -8,7 +8,7 @@
 using namespace utils;
 
 template <typename T>
-std::vector<T> window_sum(const std::vector<T> vect, const int w_size)
+std::vector<T> window_sum(const std::vector<T>& vect, const int w_size)
 {
     std::vector<T> result;
     
