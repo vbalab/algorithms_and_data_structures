@@ -1,6 +1,6 @@
 #include <vector>
 #include <numeric>
-#include "utils.h"
+#include "../utils.h"
 
 // Helps to solve O(nk) by O(n) + O(k)
 
