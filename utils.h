@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <sstream>
+#include <iterator>
 
 
 namespace utils 
@@ -9,10 +10,16 @@ namespace utils
     template <typename T>
     void print_vector(const std::vector<T> v) 
     {
-        for (const auto& index : v) 
-        {
-            std::cout << index << " ";
-        };
+        // for (const auto& index : v) 
+        // {
+        //     std::cout << index << " ";
+        // };
+        std::copy(
+            v.begin(),
+            v.end(),
+            std::ostream_iterator<T>(std::cout, " ")
+        );
+
         std::cout << std::endl;
     };
 
