@@ -59,4 +59,5 @@ int main()
     std::cout << memoization_fib(n) << "\n";
     std::cout << tabulation_fib(n) << "\n";
 
+    return 0;
 };
