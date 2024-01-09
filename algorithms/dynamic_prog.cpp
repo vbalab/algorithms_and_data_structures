@@ -35,6 +35,17 @@ int memoization_fib(const int n)
 
 
 // tabulation (bottom-top) - linearly calculate before solving a problem to look up after
+int tabulation_fib(const int n)
+{
+    int f[n];
+    f[0] = 1;
+    f[1] = 1;
+
+    for (int i = 2; i < n + 1; i++)
+        f[i] = f[i - 1] + f[i - 2];
+
+    return f[n];
+};
 
 
 int main()
@@ -46,5 +57,6 @@ int main()
 
     std::cout << recursive_fib(n) << "\n";
     std::cout << memoization_fib(n) << "\n";
+    std::cout << tabulation_fib(n) << "\n";
 
 };
