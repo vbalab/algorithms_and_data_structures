@@ -19,6 +19,7 @@ class Solution
                 for (int i = n; i < s.size();)
                 {
                     result.push_back(s[i]);
+
                     i += (numRows - 1) * 2;
                 };
             }
@@ -27,7 +28,11 @@ class Solution
                 for (int i = n; i < s.size();)
                 {
                     result.push_back(s[i]);
-                    i += (numRows - 1) * 2 - 2 * n;
+
+                    if (i + (numRows - 1) * 2 - 2 * n < s.size())
+                        result.push_back(s[i + (numRows - 1) * 2 - 2 * n]);
+
+                    i += (numRows - 1) * 2;
                 };
             };
         };
