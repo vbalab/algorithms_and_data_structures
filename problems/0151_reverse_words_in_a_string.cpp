@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
+#include <sstream>
 
 
 class Solution
@@ -8,10 +9,20 @@ class Solution
     public:
     std::string reverseWords(std::string s)
     {
-
         removeExtraWhitespaces(s);
 
-        return s;
+        std::stringstream ss(s);
+
+        std::string reversed = "";
+        std::string word;
+
+        ss >> reversed;
+        while(ss >> word)
+        {
+            reversed = word + ' ' + reversed;
+        };
+        
+        return reversed;
     };
 
     void removeExtraWhitespaces(std::string & s)
