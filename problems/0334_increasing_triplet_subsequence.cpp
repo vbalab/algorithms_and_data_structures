@@ -1,43 +1,42 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include "utils.h"
+#include <limits.h>
+#include "../utils.h"
 
 
 using namespace utils;
-2 3 1 4;
+
 
 class Solution
 {
     public:
     bool increasingTriplet(std::vector<int>& nums)
     {
-        int min = nums[0];
-        int mean = nums[0];
-        int max = nums[0];
-
-
-        for (int i = 1; i < nums.size(); i++)
+        int left = INT_MAX;
+        int mid = INT_MAX;
+        
+        
+        for(int i = 0; i < nums.size(); i ++)
         {
-            if (nums[i] < min)
+            if(nums[i] > mid)
             {
-                mean = min;
-                min = nums[i];
-            };
-
-            if (nums[i] > max)
-            {
-                mean = max;
-                max = nums[i];
-            };
-
-            if (min < mean and mean < max)
                 return true;
+            }
+            else if(nums[i] > left && nums[i] < mid)
+            {
+                mid = nums[i];
+            }
+            else if(nums[i] < left)
+            {
+                left = nums[i];
+            };
+
+            // std::cout << "i: " << left << ", j: " << mid << ", k: " << nums[i] << '\n';
         }
-
-
+        
         return false;
-    };
+    }
 };
 
 
