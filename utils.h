@@ -8,11 +8,11 @@
 namespace utils 
 {
     template <typename T>
-    void print_vector(const std::vector<T> v) 
+    void print_vector(const std::vector<T>& v) 
     {
-        // for (const auto& index : v) 
+        // for (const auto& value : v) 
         // {
-        //     std::cout << index << " ";
+        //     std::cout << value << " ";
         // };
         std::copy(
             v.begin(),
