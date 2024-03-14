@@ -30,7 +30,6 @@ T iterative_binary_search(const std::vector<T>& vect, T x)
 };
 
 
-
 template <typename T>
 T recursive_binary_search(const std::vector<T>& vect, T x, int l, int r)
 {
