@@ -72,4 +72,6 @@ int main() {
     solution.merge(nums1, m, nums2, n);
  
     print_vector(nums1);
+
+    return 0;
 };
