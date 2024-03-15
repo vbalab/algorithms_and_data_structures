@@ -1,6 +1,7 @@
+#include <map>
+#include <set>
 #include <string>
 #include <unordered_map>
-#include <map>
 
 
 std::unordered_map<int, int> just_hashmap;
@@ -45,6 +46,9 @@ int main()
     just_hashmap[20] = 'a';
     just_hashmap[2];            // will create key 2 with undentified value
     just_hashmap.at(1);         // will throw an error and won't create any key
+
+    std::set<int> set_is_a_hashmap = {6, 10, 5, 1}; // defining a set with values
+    set_is_a_hashmap.insert(2);
 
     return 0;
 };
