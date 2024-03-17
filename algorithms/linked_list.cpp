@@ -17,43 +17,43 @@
 struct Node
 {
     int data;
-    Node *link;
+    Node* link;
 };
 
 
-void insert_before(Node*& before_node, int data) 
+void insert_before(Node*& node, int data) 
 {
     Node* tempPtr = new Node;
-    tempPtr ->data = data;
-    tempPtr ->link = before_node;
+    tempPtr->data = data;
+    tempPtr->link = node;
 
-    before_node = tempPtr;
+    node = tempPtr;
 };
 
 
-void insert_after(Node*& after_node, int data) 
+void insert_after(Node*& node, int data) 
 {
     Node* tempPtr = new Node;
-    tempPtr ->data = data;
-    tempPtr ->link = after_node ->link;
+    tempPtr->data = data;
+    tempPtr->link = node->link;
 
-    after_node ->link = tempPtr;
+    node->link = tempPtr;
 };
 
 
 int main()
 {
     Node* headNode = new Node;
-    headNode ->data = 20;
-    headNode ->link = nullptr;
+    headNode->data = 20;
+    headNode->link = nullptr;
 
     insert_before(headNode, 30);
-    insert_after(headNode ->link, 40);
+    insert_after(headNode->link, 40);
 
     Node* tmp = headNode;
     while(tmp != nullptr) {
-        std::cout << tmp ->data << ";" << tmp << ";" << tmp ->link << "\n";
-        tmp = tmp ->link;
+        std::cout << tmp->data << ";" << tmp << ";" << tmp->link << "\n";
+        tmp = tmp->link;
     };
 
     return 0;
