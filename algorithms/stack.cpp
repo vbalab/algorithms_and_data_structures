@@ -7,7 +7,7 @@
 // stack - linear data structure; we can access only the top of the stack.
 // LIFO & FILO (element that inserted L/F comes out F/L)
 
-// types of stack: fixed size - array | dynamic size - linked list
+// types of stack: fixed size - array | dynamic size - linked list (extra memory for pointers)
 
 // basic operations: push(), pop(), top(), isEmpty(), size()
 
@@ -59,14 +59,14 @@ bool StackArray::isEmpty() {
 class StackNode {
 public:
     int data;
-    StackNode* next;
+    StackNode* link;
 };
 
 
 StackNode* newNode(int data) {
     StackNode* stackNode = new StackNode();
     stackNode->data = data;
-    stackNode->next = NULL;
+    stackNode->link = NULL;
     
     return stackNode;
 };
@@ -79,7 +79,7 @@ bool isEmpty(StackNode* root) {
 
 void push(StackNode*& root, int data) {     // could be changed to ** like in https://stackoverflow.com/questions/66793794/why-do-i-need-to-use-double-asterisk
     StackNode* stacknode = newNode(data);
-    stacknode->next = root;
+    stacknode->link = root;
     root = stacknode;
 };
 
@@ -89,7 +89,7 @@ int pop(StackNode*& root) {
         throw std::underflow_error("Stack underflow");
     else {
         StackNode* temp = root;
-        root = (root)->next;
+        root = (root)->link;
         int popped = temp->data;
         free(temp);
 
