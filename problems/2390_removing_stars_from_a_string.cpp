@@ -3,8 +3,9 @@
 
 class Solution {
 public:
-    std::string removeStars(std::string s) {
-
+    std::string removeStars(std::string& s) {
+        s.erase()
+        return s;
     };
 };
 
