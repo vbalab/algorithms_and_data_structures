@@ -3,7 +3,6 @@
 #include <stdexcept>
 #define MAX 1000
 
-
 // stack - linear data structure; we can access only the top of the stack.
 // LIFO & FILO (element that inserted L/F comes out F/L)
 
@@ -113,7 +112,7 @@ int main() {
     StackArray s1;
     std::cout << s1.isEmpty() << '\n';
 
-    s1.push(20);
+    s1.push(10);
     std::cout << s1.peek() << '\n';
     
     
@@ -126,10 +125,20 @@ int main() {
 
     push(root, 10);
     push(root, 20);
-    push(root, 30);
     
     std::cout << pop(root) << '\n';
     std::cout << peek(root) << '\n';
+    
+    // STD
+    std::stack<int> stackStd;
+    stackStd.push(10);
+    stackStd.push(20);
+
+    while (!stackStd.empty()) {
+        cout << stackStd.top() <<" ";
+        stackStd.pop();
+    }
+
 
     return 0;
 };
