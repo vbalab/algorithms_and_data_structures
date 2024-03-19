@@ -3,15 +3,13 @@
 #include <stdexcept>
 #define MAX 1000
 
-// stack - linear data structure; we can access only the top of the stack.
-// LIFO & FILO (element that inserted L/F comes out F/L)
+// stack - linear data structure; we can add/remove only the top of the stack -> 1 pointer
+// LIFO (element that inserted L/F comes out F/L)
 
-// types of stack: fixed size - array | dynamic size - linked list (extra memory for pointers)
-
-// basic operations: push(), pop(), top(), isEmpty(), size()
+// used for backtracking - parsing expr. and undo functionality
 
 
-// Array ----- ----- ----- ----- -----
+// Array (fixed size) ----- ----- ----- ----- -----
 class StackArray {
     int top;
 
@@ -26,7 +24,7 @@ public:
 };
 
 
-void StackArray::push(int x) {
+void StackArray::push(int x) {  // O(1)
     if (top <= MAX)
         a[++top] = x;
     else
@@ -34,7 +32,7 @@ void StackArray::push(int x) {
 };
 
 
-int StackArray::pop() {
+int StackArray::pop() {         // O(1)
     if (top >= 0)
         return a[top--];
     else
@@ -42,7 +40,7 @@ int StackArray::pop() {
 };
 
 
-int StackArray::peek() {
+int StackArray::peek() {        // O(1)
     if (top >= 0)
         return a[top];
     else
@@ -50,12 +48,12 @@ int StackArray::peek() {
 };
 
 
-bool StackArray::isEmpty() {
+bool StackArray::isEmpty() {    // O(1)
     return top == -1;
 };
 
 
-// LinkedList ----- ----- ----- ----- -----
+// LinkedList (dynamic size, extra memory for pointers) ----- ----- ----- ----- -----
 class StackNode {
 public:
     int data;
