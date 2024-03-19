@@ -11,6 +11,7 @@
 // basic operations: push(), pop(), top(), isEmpty(), size()
 
 
+// Array ----- ----- ----- ----- -----
 class StackArray {
     int top;
 
@@ -54,7 +55,7 @@ bool StackArray::isEmpty() {
 };
 
 
-// ----- ----- ----- ----- ----- 
+// LinkedList ----- ----- ----- ----- -----
 class StackNode {
 public:
     int data;
