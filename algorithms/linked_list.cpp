@@ -21,7 +21,7 @@ struct Node
 };
 
 
-Node* createNode(int data, Node* link) {
+Node* newNode(int data, Node* link) {
     Node* node = new Node;
     
     node->data = data;
@@ -33,7 +33,7 @@ Node* createNode(int data, Node* link) {
 
 void insert_before(Node*& node, int data) 
 {
-    Node* tempPtr = createNode(data, node);
+    Node* tempPtr = newNode(data, node);
 
     node = tempPtr;
 };
@@ -41,7 +41,7 @@ void insert_before(Node*& node, int data)
 
 void insert_after(Node*& node, int data) 
 {
-    Node* tempPtr = createNode(data, node->link);
+    Node* tempPtr = newNode(data, node->link);
 
     node->link = tempPtr;
 };
@@ -53,7 +53,7 @@ int main()
     // headNode->data = 20;
     // headNode->link = nullptr;
 
-    Node* headNode = createNode(20, nullptr);
+    Node* headNode = newNode(20, nullptr);
 
 
     insert_before(headNode, 30);
