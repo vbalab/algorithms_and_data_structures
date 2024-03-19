@@ -135,9 +135,10 @@ int main() {
     stackStd.push(20);
 
     while (!stackStd.empty()) {
-        cout << stackStd.top() <<" ";
+        std::cout << stackStd.top() <<" ";
         stackStd.pop();
     }
+    std::cout << "\n";
 
 
     return 0;
