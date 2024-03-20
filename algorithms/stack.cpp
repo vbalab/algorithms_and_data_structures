@@ -15,7 +15,7 @@ class StackArray {
 
 public:
     int a[MAX];
-    
+
     StackArray() { top = -1; };
     void push(int x); 
     int pop(); 
@@ -65,7 +65,7 @@ StackNode* newNode(int data) {
     StackNode* stackNode = new StackNode();
     stackNode->data = data;
     stackNode->link = NULL;
-    
+
     return stackNode;
 };
 
@@ -119,16 +119,16 @@ int main() {
     std::cout << "LinkedList:\n";
 
     StackNode* root = nullptr;
-    
+
     std::cout << isEmpty(root) << '\n';
 
     push(root, 10);
     push(root, 20);
-    
+
     std::cout << pop(root) << '\n';
     std::cout << peek(root) << '\n';
-    
-    // STD
+
+    // STD:
     std::stack<int> stackStd;
     stackStd.push(10);
     stackStd.push(20);
