@@ -4,11 +4,11 @@
 
 
 // queue - linear data structure; we can access both ends -> 2 pointers
-// FIFO - enqueue (insertion) only from tail=rear, dequeue (removals) only from head=front
+// FIFO - enqueue (insertion) only from tail=rear=back, dequeue (removals) only from head=front
 
 // used for processing in specific order - handling requests
 
-// types: circular, priority, double-ended
+// types: circular, priority, double-ended = deque
 
 
 // Array (fixed size) ----- ----- ----- ----- -----
@@ -44,7 +44,7 @@ bool isFull(QueueArray* queue) {            // O(1)
 };
 
 
-bool isEmpty(QueueArray* queue) {
+bool isEmpty(QueueArray* queue) {           // O(1)
     return queue->size == 0;
 };
 
@@ -149,16 +149,16 @@ void QueueLinkedList::dequeue() {
 
 int main() {
     // Array:
-    QueueArray* queue = createQueue(1000);
+    QueueArray* queueA = createQueue(1000);
 
-    enqueue(queue, 10);
-    enqueue(queue, 20);
-    enqueue(queue, 30);
+    enqueue(queueA, 10);
+    enqueue(queueA, 20);
+    enqueue(queueA, 30);
 
-    std::cout << queue->array[queue->tail] << " ";      // or tail(queue)
-    std::cout << queue->array[queue->head] << " ";      // or head(queue)
-    dequeue(queue);
-    std::cout << head(queue) << "\n";
+    std::cout << queueA->array[queueA->tail] << " ";      // or tail(queue)
+    std::cout << queueA->array[queueA->head] << " ";      // or head(queue)
+    dequeue(queueA);
+    std::cout << head(queueA) << "\n";
 
 
     // LinkedList:
@@ -174,7 +174,15 @@ int main() {
 
 
     // STD:
+    std::queue<int> queueSTD;
+    queueSTD.push(10);
+    queueSTD.push(20);
+    queueSTD.push(30);
 
+    std::cout << queueSTD.back() << " ";
+    std::cout << queueSTD.front() << " ";
+    queueSTD.pop();
+    std::cout << queueSTD.front() << "\n";
 
 
     return 0;
