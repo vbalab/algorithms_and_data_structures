@@ -39,7 +39,7 @@ QueueArray* createQueue(unsigned int capacity) {
 };
 
 
-bool isFull(QueueArray* queue) {
+bool isFull(QueueArray* queue) {            // O(1)
     return queue->size == queue->capacity;
 };
 
@@ -49,7 +49,7 @@ bool isEmpty(QueueArray* queue) {
 };
 
 
-void enqueue(QueueArray* queue, int data) {
+void enqueue(QueueArray* queue, int data) { // O(1)
     if (isFull(queue))
         throw std::overflow_error("Queue overflow");
     else {
@@ -61,7 +61,7 @@ void enqueue(QueueArray* queue, int data) {
 };
 
 
-int dequeue(QueueArray* queue) {
+int dequeue(QueueArray* queue) {            // O(1)
     if (isEmpty(queue))
         throw std::underflow_error("Queue underflow");
     else {
@@ -75,7 +75,7 @@ int dequeue(QueueArray* queue) {
 };
 
 
-int head(QueueArray* queue) {
+int head(QueueArray* queue) {               // O(1)
     if (isEmpty(queue))
         throw std::range_error("Queue is empty.");
     else
@@ -83,7 +83,7 @@ int head(QueueArray* queue) {
 };
 
 
-int tail(QueueArray* queue) {
+int tail(QueueArray* queue) {               // O(1)
     if (isEmpty(queue))
         throw std::range_error("Queue is empty.");
     else
@@ -92,8 +92,63 @@ int tail(QueueArray* queue) {
 
 
 // LinkedList (dynamic size, extra memory for pointers) ----- ----- ----- ----- -----
+class QueueNode {
+public:
+    int data;
+    QueueNode* link;
+
+    QueueNode(int d) {
+        data = d;
+        link = nullptr;
+    };
+};
+
+
+class QueueLinkedList {
+public:
+    QueueNode* tail;
+    QueueNode* head;
+
+    QueueLinkedList() {
+        tail = nullptr;
+        head = nullptr;
+    };
+
+    void enqueue(int x);
+    void dequeue();
+};
+
+
+void QueueLinkedList::enqueue(int x) {
+    QueueNode* temp = new QueueNode(x);
+
+    if (tail == nullptr) {  // queue is empty
+        head = temp;
+        tail = temp;
+        return;
+    };
+
+    tail->link = temp;
+    tail = temp;
+};
+
+
+void QueueLinkedList::dequeue() {
+    if (head == nullptr)
+        throw std::range_error("Queue is empty.");
+
+    QueueNode* temp = head;
+    head = head->link;
+
+    if (head==nullptr)
+        tail = nullptr;
+
+    delete(temp);
+};
+
 
 int main() {
+    // Array:
     QueueArray* queue = createQueue(1000);
 
     enqueue(queue, 10);
@@ -104,6 +159,22 @@ int main() {
     std::cout << queue->array[queue->head] << " ";      // or head(queue)
     dequeue(queue);
     std::cout << head(queue) << "\n";
+
+
+    // LinkedList:
+    QueueLinkedList queueLL;
+    queueLL.enqueue(10);
+    queueLL.enqueue(20);
+    queueLL.enqueue(30);
+
+    std::cout << queueLL.tail->data << " ";
+    std::cout << queueLL.head->data << " ";
+    queueLL.dequeue();
+    std::cout << queueLL.head->data << "\n";
+
+
+    // STD:
+
 
 
     return 0;
