@@ -29,5 +29,8 @@ int main() {
 
     delete ptr;                                     // we can 'delete' only dynamically allocated variables
 
+    // "generic pointer": void* is just a nightmare
+
+
     return 0;
 };
