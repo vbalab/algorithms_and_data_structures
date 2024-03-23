@@ -67,11 +67,7 @@ int height(Node* node) {
     if (node == nullptr)
         return 0;
 
-
-    int l = height(node->left);
-    int r = height(node->right);
-
-    return std::max(l, r) + 1;
+    return 1 + std::max(height(node->left), height(node->right));
 };
 
 
@@ -97,7 +93,7 @@ void print_tree(std::vector<Node*> level_nodes, int height, int lenght_of_num) {
     if (height == 0)
         return;
 
-
+    
     int spaces_between = n_sum(height) + lenght_of_num;
     std::vector<Node*> next_level_nodes;
 
@@ -161,6 +157,7 @@ int main() {
     std::cout << "Height: " << height(root) << '\n';
     std::cout << "Max value: " << max_of_tree(root) << '\n';
 
+    std::cout << "Level traversal:";
     print_tree({root}, height(root), 2);
 
     return 0;
