@@ -2,7 +2,7 @@
 #include<vector>
 
 
-// Generic Trees == N-ary Trees - hierarchical d.s.
+// Generic Trees == N-ary Trees
 
 // bad approaches for implementation: array, linkedList
 
