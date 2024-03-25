@@ -3,11 +3,12 @@
 #include <stdexcept>
 #define MAX 1000
 
-// stack - linear data structure; we can add/remove only the top of the stack -> 1 pointer
-// LIFO (element that inserted L/F comes out F/L)
+/*
+stack - linear data structure; we can add/remove only the top of the stack -> 1 pointer
+LIFO (element that inserted L/F comes out F/L)
 
-// used for backtracking - parsing expr. and undo functionality
-
+used for backtracking - parsing expr. and undo functionality
+*/
 
 // Array (fixed size) ----- ----- ----- ----- -----
 class StackArray {

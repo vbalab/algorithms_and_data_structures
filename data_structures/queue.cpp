@@ -2,14 +2,14 @@
 #include <iostream>
 #include <stdexcept>
 
+/*
+queue - linear data structure; we can access both ends -> 2 pointers
+FIFO - enqueue (insertion) only from tail=rear=back, dequeue (removals) only from head=front
 
-// queue - linear data structure; we can access both ends -> 2 pointers
-// FIFO - enqueue (insertion) only from tail=rear=back, dequeue (removals) only from head=front
+used for processing in specific order - handling requests
 
-// used for processing in specific order - handling requests
-
-// types: circular, priority, double-ended = deque
-
+types: circular, priority, double-ended = deque
+*/
 
 // Array (fixed size) ----- ----- ----- ----- -----
 class QueueArray {

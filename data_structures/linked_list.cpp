@@ -1,18 +1,21 @@
 #include <iostream>
 #include <string>
 
-// linked list - chain of elements with a pointer to the following element
 
-// head node -> node -> node -> ... -> node -> null pointer (to indicate the end)
-// each node has data and pointer to another node
+/*
+linked list - chain of elements with a pointer to the following element
 
-// linked list excels in incertion and deletion of nodes in O(1) in runtime; but getting to particular node - O(n)
-// vector excels in getting an element in O(1) in runtime (because of hashmapping - indexes)
+head node -> node -> node -> ... -> node -> null pointer (to indicate the end)
+each node has data and pointer to another node
 
-// l.l. makes stack, queue
+linked list excels in incertion and deletion of nodes in O(1) in runtime; but getting to particular node - O(n)
+vector excels in getting an element in O(1) in runtime (because of hashmapping - indexes)
 
+l.l. makes stack, queue
 
-// via struct or class
+implemented via struct or class
+*/
+
 
 struct Node
 {

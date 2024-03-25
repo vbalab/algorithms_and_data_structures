@@ -2,9 +2,15 @@
 #include <vector>
 
 
-// Tree - hierarchical d.s.
+/*
+Tree - hierarchical d.s.
 
-// DFS (Depth First Traversals): inorder, preorder, postorder
+Types of traversals:
+    DFS (Depth First search): inorder, preorder, postorde
+    BFS (breadth first search) = 
+*/
+
+
 class Node {
 public:
     int data;
