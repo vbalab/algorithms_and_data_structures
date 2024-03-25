@@ -75,6 +75,30 @@ int n_sum(int n) {
 };
 
 
+void bfs(std::vector<Node*> level_nodes) {
+    if (level_nodes.size() == 0)
+        return;
+
+
+    std::vector<Node*> next_level_nodes;
+
+    for (const Node* node: level_nodes) {
+        std::cout << node->data << ' ';
+
+        if (node->left != nullptr)
+            next_level_nodes.push_back(node->left);
+
+        if (node->right != nullptr)
+            next_level_nodes.push_back(node->right);
+    };
+
+
+    std::cout << '\n';
+    bfs(next_level_nodes);
+};
+
+
+// modified BFS:
 void print_tree(std::vector<Node*> level_nodes, int height, int lenght_of_num) {
     if (height == 0)
         return;
@@ -127,31 +151,28 @@ int main() {
     root->right->left = new Node(30);
 
 
-    std::cout << "Inorder traversal: ";
+    std::cout << "(DFS) Inorder traversal: ";
     inorder_traversal(root);
     std::cout << '\n';
 
-    std::cout << "Preorder traversal: ";
+    std::cout << "(DFS) Preorder traversal: ";
     preorder_traversal(root);
     std::cout << '\n';
 
-    std::cout << "Postorder traversal: ";
+    std::cout << "(DFS) Postorder traversal: ";
     postorder_traversal(root);
     std::cout << '\n';
 
 
     std::cout << "Height: " << height(root) << '\n';
 
-    std::cout << "Level traversal:";
+
+    std::cout << "BFS = Level traversal:\n";
+    bfs({root});
+
+    std::cout << "Modified level traversal:";
     print_tree({root}, height(root), 2);
 
 
-
-
-    Node* smth1 = new Node(10);
-    Node smth2 = Node(10);
-
-    std::cout << smth1->left << '\n';
-    std::cout << smth2.left << '\n';
     return 0;
 };
