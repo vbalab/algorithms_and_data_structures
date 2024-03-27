@@ -1,7 +1,7 @@
-#include <iostream>
 #include <string>
 #include <vector>
 #include <sstream>
+#include <iostream>
 #include <iterator>
 
 
@@ -26,17 +26,19 @@ namespace utils
 
     // std::string input_line;
     // std::getline(std::cin, input_line);
-    std::vector<int> fill_vector_from_string(std::string input_line)
+    template <typename T>
+    std::vector<T> fill_vector_from_string(const std::string& input_line)
     {
-        std::vector<int> v;
+        T input;
+        std::istringstream stream;
+        std::vector<T> v;
 
-        std::istringstream stream(input_line);
-        int input;
+
+        stream.str(input_line);
 
         while (stream >> input)
-            {
                 v.push_back(input);
-            };
+
 
         return v;
     };
