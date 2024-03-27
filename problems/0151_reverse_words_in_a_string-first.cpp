@@ -1,7 +1,7 @@
-#include <iostream>
 #include <string>
-#include <algorithm>
 #include <sstream>
+#include <iostream>
+#include <algorithm>
 
 
 class Solution

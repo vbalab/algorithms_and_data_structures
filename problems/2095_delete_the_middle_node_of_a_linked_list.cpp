@@ -3,15 +3,6 @@
 #include "../utils.h"
 
 
-static const int _ = [](){
-    std::ios_base::sync_with_stdio(false);
-    std::cin.tie(nullptr); 
-    std::cout.tie(nullptr);
-
-    return 0;
-}();
-
-
 struct Node {
     int val;
     Node* next;
