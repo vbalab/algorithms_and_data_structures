@@ -1,6 +1,6 @@
-#include <iostream>
+#include <queue>
 #include <vector>
-
+#include <iostream>
 
 /*
 Tree - hierarchical d.s.
@@ -42,6 +42,7 @@ void preorder_traversal(Node* node) {
         std::cout << node->data << ' ';
 
         preorder_traversal(node->left);
+
         preorder_traversal(node->right);
     };
 };
@@ -50,6 +51,7 @@ void preorder_traversal(Node* node) {
 void postorder_traversal(Node* node) {
     if (node != nullptr) {
         postorder_traversal(node->left);
+        
         postorder_traversal(node->right);
 
         std::cout << node->data << ' ';
@@ -139,6 +141,41 @@ void print_tree(std::vector<Node*> level_nodes, int height, int lenght_of_num) {
 
 
     print_tree(next_level_nodes, --height, lenght_of_num);
+};
+
+
+
+template <typename T>
+void fill_by_bfs(Node*& root, std::queue<T>& values) {
+    int values_size = values.size() - 1;        // -1 for the initial pop()
+
+    std::vector<Node*> nodes = { root };
+    std::vector<Node*> new_nodes;
+
+
+    while (nodes.size() > 0) {
+        new_nodes = { };
+
+        for (Node* node: nodes) {
+            node->data = values.front();
+            values.pop();
+
+
+            if (values_size > 0) {
+                node->left = new Node();
+                new_nodes.push_back(node->left);
+                values_size--;
+            };
+
+            if (values_size > 0) {
+                node->right = new Node();
+                new_nodes.push_back(node->right);
+                values_size--;
+            };
+        };
+
+        nodes = new_nodes;
+    };
 };
 
 
