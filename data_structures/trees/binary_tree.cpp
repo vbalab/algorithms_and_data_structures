@@ -1,6 +1,7 @@
 #include <queue>
 #include <vector>
 #include <iostream>
+#include <stack>
 
 /*
 Tree - hierarchical d.s.
@@ -16,6 +17,8 @@ public:
     int data;
     Node* left;
     Node* right;
+
+    Node() {};
 
     Node(int data) {
         this->data = data;
@@ -55,6 +58,37 @@ void postorder_traversal(Node* node) {
         postorder_traversal(node->right);
 
         std::cout << node->data << ' ';
+    };
+};
+
+
+void preorder_traversal_no_recursion(Node* node) {
+    std::stack<Node*> stack;
+
+    while (node) {
+        while (node) {
+            stack.push(node);
+
+            std::cout << node->data << ' ';
+
+            node = node->left;
+        };
+
+
+        node = stack.top();
+
+        while (!node->right & !stack.empty()) {
+            stack.pop();
+
+            if (stack.empty())
+                return;
+
+            node = stack.top();
+        };
+
+        node = node->right;
+        stack.pop(); 
+
     };
 };
 
@@ -200,6 +234,9 @@ int main() {
     postorder_traversal(root);
     std::cout << '\n';
 
+    std::cout << "(DFS) Preorder traversal - no recursion: ";
+    preorder_traversal_no_recursion(root);
+    std::cout << '\n';
 
     std::cout << "Height: " << height(root) << '\n';
 
