@@ -3,18 +3,18 @@
 #include <iostream>
 
 
-class TreeNode {
+class Node {
 public:
     int val;
 
-    TreeNode* left;
-    TreeNode* right;
+    Node* left;
+    Node* right;
 
 
-    TreeNode() { };
+    Node() { };
 
 
-    TreeNode(int val) {
+    Node(int val) {
         this->val = val;
 
         this->left = nullptr;
@@ -24,29 +24,29 @@ public:
 
 
 template <typename T>
-void fill_by_bfs(TreeNode*& root, std::queue<T>& values) {
+void fill_by_bfs(Node*& root, std::queue<T>& values) {
     int values_size = values.size() - 1;        // -1 for the initial pop()
 
-    std::vector<TreeNode*> nodes = { root };
-    std::vector<TreeNode*> new_nodes;
+    std::vector<Node*> nodes = { root };
+    std::vector<Node*> new_nodes;
 
 
     while (nodes.size() > 0) {
         new_nodes = { };
 
-        for (TreeNode* node: nodes) {
+        for (Node* node: nodes) {
             node->val = values.front();
             values.pop();
 
 
             if (values_size > 0) {
-                node->left = new TreeNode();
+                node->left = new Node();
                 new_nodes.push_back(node->left);
                 values_size--;
             };
 
             if (values_size > 0) {
-                node->right = new TreeNode();
+                node->right = new Node();
                 new_nodes.push_back(node->right);
                 values_size--;
             };
@@ -57,7 +57,7 @@ void fill_by_bfs(TreeNode*& root, std::queue<T>& values) {
 };
 
 
-int height(TreeNode* node) {
+int height(Node* node) {
     if (node == nullptr)
         return 0;
 
@@ -75,13 +75,13 @@ int n_sum(int n) {
 };
 
 
-void print_tree(std::vector<TreeNode*> level_nodes, int height, int lenght_of_num) {
+void print_tree(std::vector<Node*> level_nodes, int height, int lenght_of_num) {
     if (height == 0)
         return;
 
 
     int spaces_between = n_sum(height) + lenght_of_num;
-    std::vector<TreeNode*> next_level_nodes;
+    std::vector<Node*> next_level_nodes;
 
 
     for (int i = 0; i < level_nodes.size() & level_nodes.size() > 1; i++) {
@@ -95,7 +95,7 @@ void print_tree(std::vector<TreeNode*> level_nodes, int height, int lenght_of_nu
     std::cout << '\n';
 
 
-    for (const TreeNode* node: level_nodes) {
+    for (const Node* node: level_nodes) {
         std::cout.width(spaces_between);
 
         if (node == nullptr) {
@@ -120,7 +120,7 @@ void print_tree(std::vector<TreeNode*> level_nodes, int height, int lenght_of_nu
 
 class Solution {
 public:
-    void getLeafs(TreeNode* root, std::vector<int>& leafs) {
+    void getLeafs(Node* root, std::vector<int>& leafs) {
         if (root->left == nullptr & root->right == nullptr)
             leafs.push_back(root->val);
 
@@ -131,7 +131,7 @@ public:
     };
 
 
-    bool leafSimilar(TreeNode* root1, TreeNode* root2) {
+    bool leafSimilar(Node* root1, Node* root2) {
         std::vector<int> leafs1;
         std::vector<int> leafs2;
 
@@ -169,10 +169,10 @@ int main() {
             q2.push(input);
 
 
-    TreeNode* root1 = new TreeNode();
+    Node* root1 = new Node();
     fill_by_bfs(root1, q1);
 
-    TreeNode* root2 = new TreeNode();
+    Node* root2 = new Node();
     fill_by_bfs(root2, q2);
 
 
