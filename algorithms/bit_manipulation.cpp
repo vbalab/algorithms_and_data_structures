@@ -21,7 +21,7 @@ bool bitwise_xor(bool a, bool b) {
 
 
 bool get_bit(int num, int i) {
-    return num & (1 << i);
+    return (num & (1 << i)) != 0;
 };
 
 
