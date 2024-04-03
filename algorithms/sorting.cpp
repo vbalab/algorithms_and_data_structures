@@ -19,6 +19,20 @@ void selection_sort(std::vector<int>& nums) {       // O(n^2)
 };
 
 
+void bubble_sort(std::vector<int>& nums) {          // O(n^2)
+    int end = nums.size() - 1;
+
+    while (end != 0) {
+        for (int i = 0; i < end; i++) {
+            if (nums[i + 1] < nums[i])
+                std::swap(nums[i + 1], nums[i]);
+        };
+
+        end--;
+    };
+};
+
+
 int main() {
     std::string input_line;
     std::getline(std::cin, input_line);
@@ -34,7 +48,7 @@ int main() {
             v.push_back(input);
 
 
-    selection_sort(v);
+    bubble_sort(v);
 
     for (int num: v)
         std::cout << num << ' ';
