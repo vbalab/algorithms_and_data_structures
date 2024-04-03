@@ -16,6 +16,8 @@ void selection_sort(std::vector<int>& nums) {       // O(n^2)
 
         std::swap(nums[min_idx], nums[i]);        
     };
+
+    return;                                         // it is considered a good practice
 };
 
 
@@ -30,6 +32,8 @@ void bubble_sort(std::vector<int>& nums) {          // O(n^2)
 
         end--;
     };
+
+    return;
 };
 
 
