@@ -15,7 +15,7 @@ struct Node
 };
 
 
-Node* insert(Node* node, int data) {
+Node* insert(Node*& node, int data) {
     if (node == nullptr) {
         Node* tmp = new Node(data);
         return tmp;
@@ -31,7 +31,7 @@ Node* insert(Node* node, int data) {
 };
 
 
-Node* min_value_node(Node*& node) {
+Node* min_value_node(Node* node) {
     if (node->left == nullptr)
         return node;
 
@@ -39,7 +39,7 @@ Node* min_value_node(Node*& node) {
 };
 
 
-Node* max_value_node(Node*& node) {
+Node* max_value_node(Node* node) {
     if (node->right == nullptr)
         return node;
 
