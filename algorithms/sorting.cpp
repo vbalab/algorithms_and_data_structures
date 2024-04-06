@@ -37,6 +37,23 @@ void bubble_sort(std::vector<int>& nums) {          // O(n^2)
 };
 
 
+void insertion_sort(std::vector<int>& nums) {       // O(n^2)
+    int val;
+    int j;
+
+    for (int i = 1; i < nums.size(); i++) {
+        val = nums[i];
+
+        for (j = i; j > 0 and val < nums[j - 1]; j--)
+            nums[j] = nums[j - 1];
+
+        nums[j] = val;
+    };
+    
+    return;
+};
+
+
 int main() {
     std::string input_line;
     std::getline(std::cin, input_line);
@@ -52,7 +69,7 @@ int main() {
             v.push_back(input);
 
 
-    bubble_sort(v);
+    insertion_sort(v);
 
     for (int num: v)
         std::cout << num << ' ';
