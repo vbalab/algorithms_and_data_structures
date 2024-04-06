@@ -54,6 +54,40 @@ void insertion_sort(std::vector<int>& nums) {       // O(n^2)
 };
 
 
+std::vector<int> merge_sorting(std::vector<int> nums) {
+    if (nums.size() <= 1) {
+        return nums;
+    }
+
+
+    int m = nums.size() >> 1;
+    std::vector<int> left;
+    std::vector<int> right;
+
+    for (int i = 0; i < m; i++)
+        left.push_back(nums[i]);
+    for (int i = m; i < nums.size(); i++)
+        right.push_back(nums[i]);
+
+    left = merge_sorting(left);
+    right = merge_sorting(right);
+
+
+    int l = 0;
+    int r = 0;
+
+    for (int i = 0; i < nums.size(); i++) {
+        if ((left[l] < right[r] and l < left.size()) or r == right.size())
+            nums[i] = left[l++];
+        else
+            nums[i] = right[r++];
+    };
+
+
+    return nums;
+};
+
+
 int main() {
     std::string input_line;
     std::getline(std::cin, input_line);
@@ -69,7 +103,7 @@ int main() {
             v.push_back(input);
 
 
-    insertion_sort(v);
+    v = merge_sorting(v);
 
     for (int num: v)
         std::cout << num << ' ';
