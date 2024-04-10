@@ -54,7 +54,7 @@ void insertion_sort(std::vector<int>& nums) {       // O(n^2)
 };
 
 
-std::vector<int> merge_sorting(std::vector<int> nums) {
+std::vector<int> merge_sorting(std::vector<int>& nums) {
     if (nums.size() <= 1) {
         return nums;
     }
