@@ -104,5 +104,4 @@ int main() {
 
     return 0;
 };
-
-// QUESTION: how after the scope of function linkedlist remembers the tmp pointer that should've been deleted
+    
