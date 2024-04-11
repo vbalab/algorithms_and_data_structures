@@ -1,11 +1,15 @@
 #include <bitset>
 #include <iostream>
 
+/*
+Bitwise AND (&)
+Bitwise OR (|)
+Bitwise XOR (^)
+Bitwise NOT (!)
 
-// Bitwise AND (&)
-// Bitwise OR (|)
-// Bitwise XOR (^)
-// Bitwise NOT (!)
+
+ptr && (*ptr==7) If ptr is zero, the result is false without any risk of seg faulting by dereferencing zero.
+*/
 
 
 bool bitwise_xor(bool a, bool b) {
