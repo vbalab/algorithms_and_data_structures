@@ -8,6 +8,7 @@ Bitwise XOR (^)
 Bitwise NOT (!)
 
 
+&& and & are different: https://stackoverflow.com/questions/34492501/difference-between-and-or-and
 ptr && (*ptr==7) If ptr is zero, the result is false without any risk of seg faulting by dereferencing zero.
 */
 
