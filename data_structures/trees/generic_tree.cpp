@@ -84,6 +84,12 @@ int main() {
     d_root->children = { d_child_1, d_child_2 };
     d_child_2->children = { d_child_2_1 };
 
+    d_root->insert(4);
+    d_root->insert(5);
+
+    d_root->preorder_traversal();
+    std::cout << '\n';
+
     std::cout << d_root->children[1]->children[0]->val << '\n';
 
 
@@ -104,4 +110,3 @@ int main() {
 
     return 0;
 };
-    
