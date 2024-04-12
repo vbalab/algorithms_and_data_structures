@@ -1,6 +1,7 @@
+#include <vector>
 #include <sstream>
 #include <iostream>
-#include <vector>
+#include <algorithm>
 
 
 void selection_sort(std::vector<int>& nums) {       // O(n^2)
@@ -88,6 +89,14 @@ std::vector<int> merge_sorting(std::vector<int>& nums) {
 };
 
 
+void heap_sorting(std::vector<int>& nums) {
+    std::make_heap(nums.begin(), nums.end());
+    std::sort_heap(nums.begin(), nums.end());
+
+    return;
+};
+
+
 int main() {
     std::string input_line;
     std::getline(std::cin, input_line);
@@ -103,7 +112,7 @@ int main() {
             v.push_back(input);
 
 
-    v = merge_sorting(v);
+    heap_sorting(v);
 
     for (int num: v)
         std::cout << num << ' ';
