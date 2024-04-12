@@ -3,6 +3,8 @@
 #include <random>
 #include <iostream>
 #include <stdexcept>
+#include <algorithm>
+
 
 /*
 MIN/MAX heap - hierarchical d.s. based on a tree;
@@ -41,8 +43,6 @@ class HeapMin {
     void heapify(int i);
 
 public:
-    HeapMin () {};
-
     HeapMin (int capacity);
 
     int top();
@@ -174,33 +174,67 @@ void HeapMin::show() {
 };
 
 
+void print_vector(std::vector<int> v) {
+    for (int num: v)
+        std::cout << num << ' ';
+    std::cout << '\n';
+};
+
+
 int main() {
+    // Array:
     std::random_device dev;
     std::mt19937 rng(dev());
     std::uniform_int_distribution<std::mt19937::result_type> dist1000(0, 1000);
 
     HeapMin heap = HeapMin(100);
+
     for (int i = 0; i < 10; i++)
         heap.insert(dist1000(rng));
 
 
-    heap.show();
     std::cout << heap.top() << '\n';
+    heap.show();
     
     heap.pop();
-
     heap.show();
-    std::cout << heap.top() << '\n';
 
     heap.changeValue(2, 10);
-
     heap.show();
-    std::cout << heap.top() << '\n';
 
     heap.remove(3);
-
     heap.show();
-    std::cout << heap.top() << '\n';
+
+
+    // STD:
+    /*
+    make_heap(): Converts given range to a heap.
+    push_heap(): Arrange the heap after insertion at the end.
+    pop_heap(): Moves the max element at the end for deletion.
+    sort_heap(): Sort the elements of the max_heap to ascending order.
+    is_heap(): Checks if the given range is max_heap.
+    is_heap_until(): Returns the largest sub-range that is max_heap.
+    */
+    std::vector<int> v;
+    for (int i = 0; i < 10; i++)
+        v.push_back(dist1000(rng));
+
+    print_vector(v);
+
+
+    std::make_heap(v.begin(), v.end());
+    print_vector(v);
+
+    std::pop_heap(v.begin(), v.end());
+    v.pop_back();
+    print_vector(v);
+
+    v.push_back(1100);
+    std::push_heap(v.begin(), v.end());
+    print_vector(v);
+
+    std::sort_heap(v.begin(), v.end());
+    print_vector(v);
 
 
     return 0;
