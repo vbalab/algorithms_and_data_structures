@@ -13,11 +13,24 @@ public:
 };
 
 
+class stores {
+public:
+    int* array;
+
+
+    stores(int array[]) {
+        this->array = array;
+    };
+};
+
+
 int main() {
+
     some a[2];
     a[0] = some(5);
     a[1] = some(10);
 
+    // int a[n] AND int* a      will get the same exact array, since
     // array itself - one pointer to the first element.
     std::cout << "Array: " << a << " is the same as " << &a[0] << '\n';
 
@@ -32,7 +45,13 @@ int main() {
 
 
     // multidimensional array:
-    int b[2][2] = { { 0, 1 }, { 2, 3 } }
+    int b[2][2] = { { 0, 1 }, { 2, 3 } };
+
+
+    // giving array to functions
+    int array[3] = { 1, 2, 3 };
+    stores c(array);
+    std::cout << c.array[1] << '\n';
 
 
     return 0;
