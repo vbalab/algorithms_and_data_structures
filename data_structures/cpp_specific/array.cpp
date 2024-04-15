@@ -25,9 +25,9 @@ public:
 
 
 int main() {
-    int x[3] = { 1, 2, 3 };
-    // is the same as
-    int* y = new int[3]{ 1, 2, 3 };
+    int x[3] = { 1, 2, 3 };             // is array
+    int* y = new int[3]{ 1, 2, 3 };     // is a pointer, NOT an array
+    delete [] y;
 
 
     some a[2];
