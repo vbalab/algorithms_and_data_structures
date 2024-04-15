@@ -25,12 +25,15 @@ public:
 
 
 int main() {
+    int x[3] = { 1, 2, 3 };
+    // is the same as
+    int* y = new int[3]{ 1, 2, 3 };
+
 
     some a[2];
     a[0] = some(5);
     a[1] = some(10);
 
-    // int a[n] AND int* a      will get the same exact array, since
     // array itself - one pointer to the first element.
     std::cout << "Array: " << a << " is the same as " << &a[0] << '\n';
 
