@@ -10,14 +10,15 @@ balance factor (of the node) - the difference between the heights for any node.
 
 
 class AVLNode {
-private:
+public:
+// private:
+    int height();
+
+    AVLNode* left_rotate();
 
     AVLNode* right_rotate();
 
-
-public:
-    int height();
-    AVLNode* left_rotate();
+// public:
     int data;
     AVLNode* left;
     AVLNode* right;
@@ -47,6 +48,16 @@ AVLNode* AVLNode::left_rotate() {
 
     this->right = this->right->left;
     tmp->left = this;
+
+    return tmp;
+};
+
+
+AVLNode* AVLNode::right_rotate() {
+    AVLNode* tmp = this->left;
+
+    this->left = this->left->right;
+    tmp->right = this;
 
     return tmp;
 };
@@ -141,6 +152,9 @@ int main() {
 
     print_tree({root}, root->height(), 2);
 
+    root = root->right_rotate();
+
+    print_tree({root}, root->height(), 2);
 
     return 0;
 };
