@@ -6,19 +6,24 @@
 AVL tree - self-balancing BST with difference between heights of left and right subtrees for any node cannot be more than one.
 
 balance factor (of the node) - the difference between the heights for any node.
+
+B-tree ~ N-ary AVL-tree.
 */
 
 
 class AVLNode {
+private:
+
+    int n_sum(int n);
+
+    int get_balance();
+
+    AVLNode* bst_insert(int data);
+
+    void print_nodes(std::vector<AVLNode*> level_nodes, int height, int lenght_of_num);
+
+
 public:
-// private:
-    int height();
-
-    AVLNode* left_rotate();
-
-    AVLNode* right_rotate();
-
-// public:
     int data;
     AVLNode* left;
     AVLNode* right;
@@ -29,64 +34,22 @@ public:
         this->data = v;
     };
 
-    AVLNode* bst_insert(int data);
+
+    int height();
 
     AVLNode* insert(int data);
+
+    AVLNode* left_rotate();
+
+    AVLNode* right_rotate();
+
+    AVLNode* rebalance();
+
+    void print_tree();
 };
 
 
-int AVLNode::height() {
-    if (this == nullptr)
-        return 0;
-    
-    return std::max(this->left->height(), this->right->height()) + 1;
-};
-
-
-AVLNode* AVLNode::left_rotate() {
-    AVLNode* tmp = this->right;
-
-    this->right = this->right->left;
-    tmp->left = this;
-
-    return tmp;
-};
-
-
-AVLNode* AVLNode::right_rotate() {
-    AVLNode* tmp = this->left;
-
-    this->left = this->left->right;
-    tmp->right = this;
-
-    return tmp;
-};
-
-
-AVLNode* AVLNode::bst_insert(int data) {
-    if (this == nullptr) {
-        AVLNode* tmp = new AVLNode(data);
-        return tmp;
-    };
-
-    if (data < this->data)
-        this->left = this->left->bst_insert(data);
-    else if (data > this->data)
-        this->right = this->right->bst_insert(data);
-    
-    return this;
-};
-
-
-AVLNode* AVLNode::insert(int data) {
-    this->bst_insert(data);
-
-    // return node;
-    return this;
-};
-
-
-int n_sum(int n) {
+int AVLNode::n_sum(int n) {
     int sum = 0;
 
     while (n != 0)
@@ -96,7 +59,7 @@ int n_sum(int n) {
 };
 
 
-void print_tree(std::vector<AVLNode*> level_nodes, int height, int lenght_of_num) {
+void AVLNode::print_nodes(std::vector<AVLNode*> level_nodes, int height, int lenght_of_num) {
     if (height == 0)
         return;
 
@@ -135,26 +98,133 @@ void print_tree(std::vector<AVLNode*> level_nodes, int height, int lenght_of_num
     std::cout << '\n';
 
 
-    print_tree(next_level_nodes, --height, lenght_of_num);
+    print_nodes(next_level_nodes, --height, lenght_of_num);
 };
 
 
-int main() {
-    AVLNode* root = new AVLNode(40);
+void AVLNode::print_tree() {
+    print_nodes({ this }, this->height(), 2);
 
-    int nums[10] = { 25, 75, 11, 40, 15, 35, 45, 80, 55, 90 };    
+    return;
+};
+
+
+int AVLNode::height() {
+    if (this == nullptr)
+        return 0;
+    
+    return std::max(this->left->height(), this->right->height()) + 1;
+};
+
+
+int AVLNode::get_balance() {
+    if (this == nullptr)
+        return 0;
+
+    return this->left->height() - this->right->height();
+};
+
+
+AVLNode* AVLNode::left_rotate() {
+    AVLNode* tmp = this->right;
+
+    this->right = this->right->left;
+    tmp->left = this;
+
+    return tmp;
+};
+
+
+AVLNode* AVLNode::right_rotate() {
+    AVLNode* tmp = this->left;
+
+    this->left = this->left->right;
+    tmp->right = this;
+
+    return tmp;
+};
+
+
+AVLNode* AVLNode::bst_insert(int data) {
+    if (this == nullptr) {
+        AVLNode* tmp = new AVLNode(data);
+        return tmp;
+    };
+
+    if (data < this->data)
+        this->left = this->left->bst_insert(data);
+    else if (data > this->data)
+        this->right = this->right->bst_insert(data);
+    
+    return this;
+};
+
+
+AVLNode* AVLNode::rebalance() {
+    if (this->height() <= 1)
+        return this;
+
+
+    AVLNode* node = this;
+
+
+    node->left = this->left->rebalance();
+    node->right = this->right->rebalance();
+
+
+    while (node->get_balance() < -1 || node->get_balance() > 1) {
+        std::cout << "BEFORE:\n";
+        node->print_tree();
+
+        if (node->get_balance() < -1) {
+            if (node->right->get_balance() == 1)
+                node->right = node->right->right_rotate();
+            node = node->left_rotate();
+
+        }
+        else {
+            if (node->left->get_balance() == 1)
+                node->left = node->left->left_rotate();
+            node = node->right_rotate();
+        };
+
+        std::cout << "AFTER:\n";
+        node->print_tree();
+    };
+
+
+    return node;
+};
+
+
+AVLNode* AVLNode::insert(int data) {
+    this->bst_insert(data);
+
+    AVLNode* node = this->rebalance();
+
+    return node;
+    // return this;
+};
+
+
+
+int main() {
+    AVLNode* root = new AVLNode(0);
+
+    int nums[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };    
     for (const int num: nums)
         root = root->insert(num);
 
-    print_tree({root}, root->height(), 2);
-    
-    root = root->left_rotate();
+    root->print_tree();
 
-    print_tree({root}, root->height(), 2);
+
+    root = root->left_rotate();
+    root->print_tree();
+
 
     root = root->right_rotate();
+    root->print_tree();
 
-    print_tree({root}, root->height(), 2);
 
     return 0;
 };
