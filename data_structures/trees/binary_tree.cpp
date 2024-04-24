@@ -7,8 +7,11 @@
 Tree - hierarchical d.s.
 
 Types of traversals:
-    DFS (Depth First search): inorder, preorder, postorde
-    BFS (breadth first search) = 
+    DFS (Depth First search): inorder, preorder, postorde;
+    BFS (breadth first search).
+
+Height of a complete BT is [log_2{n - 1}] + 1
+Height of a balanced BT is ~ [log_2{n - 1}] + 1
 */
 
 
