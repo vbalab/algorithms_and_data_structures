@@ -4,7 +4,7 @@
 #include <stack>
 
 /*
-Tree - hierarchical d.s.
+Tree - a connected graph without cycles <- hierarchical d.s.
 
 Types of traversals:
     DFS (Depth First search): inorder, preorder, postorde;
