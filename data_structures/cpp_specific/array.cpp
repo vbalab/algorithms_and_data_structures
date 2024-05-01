@@ -15,8 +15,14 @@ public:
 
 class stores {
 public:
-    int* array;
+    // int array[];                        // Error: array of indeterminate length.
 
+    // int n;
+    // int array[n];                       // Error: nonstatic member reference must be relative to a specific object
+
+    int* array;                         // Bad design: no real ownership of array, class has no knowledge of the length
+
+    // Solution: use std::vector<>
 
     stores(int array[]) {
         this->array = array;
