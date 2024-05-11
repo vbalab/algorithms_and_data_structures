@@ -68,4 +68,6 @@ int main() {
     }
 
     solve(S);
+
+    return 0;
 };
