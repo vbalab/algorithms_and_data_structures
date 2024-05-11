@@ -2,21 +2,6 @@
 #include <iostream>
 
 
-template <class T>
-int print_matrix(std::vector<std::vector<T>>& m) {
-    int sum = 0;
-
-    for (int i = 0; i < m.size(); i++) {
-        for (int j = 0; j < m[i].size(); j++) {
-            std::cout << m[i][j] << ' ';
-        };
-        std::cout << '\n';
-    };
-
-    return sum;
-};
-
-
 int calculate_x(int M, int N, int i, int j, std::vector<std::vector<bool>>& matrix) {
     int x = 1;
 

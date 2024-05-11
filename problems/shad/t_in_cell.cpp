@@ -23,11 +23,11 @@ int calculate_t(int M, int N, int i, int j, std::vector<std::vector<bool>>& matr
 
     for (int i_ = i + 1; i_ < M && matrix[i_][j]; i_++)
         t++;
-    for (int i_ = i - 1; i_ > 0 && matrix[i_][j]; i_--)
+    for (int i_ = i - 1; i_ >= 0 && matrix[i_][j]; i_--)
         t++;
     for (int j_ = j + 1; j_ < N && matrix[i][j_]; j_++)
         t++;
-    for (int j_ = j - 1; j_ > 0 && matrix[i][j_]; j_--)
+    for (int j_ = j - 1; j_ >= 0 && matrix[i][j_]; j_--)
         t++;
 
     return t;
