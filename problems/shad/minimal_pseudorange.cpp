@@ -1,7 +1,7 @@
-#include <iostream>
-#include <algorithm>
 #include <vector>
 #include <iomanip>
+#include <iostream>
+#include <algorithm>
 
 
 double calculate_lambda(int s_max, int s_min, int a_max, int a_min) {
@@ -10,7 +10,6 @@ double calculate_lambda(int s_max, int s_min, int a_max, int a_min) {
 
 
 void solve(std::vector<int>& S) {
-
     int N = S.size();
     std::sort(S.begin(), S.end());
     
@@ -49,7 +48,6 @@ void solve(std::vector<int>& S) {
 
     for (int i = i_min; i <= i_min + N / 2 - 1; i++)
         std::cout << S[i] << ' ';
-
     std::cout << '\n';
 
     return;
