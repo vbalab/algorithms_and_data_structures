@@ -13,7 +13,7 @@ void solve(std::vector<int>& S) {
     int N = S.size();
     std::sort(S.begin(), S.end());
     
-    double lambda_min;
+    double lambda_min = __INT_MAX__;
     double lambda;
     int i_min = 0;
     int i = 0;
