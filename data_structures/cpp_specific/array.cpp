@@ -31,9 +31,11 @@ public:
 
 
 int main() {
-    int x[3] = { 1, 2, 3 };             // is array
-    int* y = new int[3]{ 1, 2, 3 };     // is a pointer, NOT an array
-    delete [] y;
+    int x[3] = { 1, 2, 3 };             // is a static array, gets automatically deleted
+    int* y = new int[3]{ 1, 2, 3 };     // is a dynamic array, needs to be delete by hand explicitly
+    int* z = new int[3]{ 1, 2, 3 };     // is a dynamic array, needs to be delete by hand implicitly
+    free(y);
+    delete y;
 
 
     some a[2];
