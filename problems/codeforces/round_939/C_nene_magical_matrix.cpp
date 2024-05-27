@@ -15,7 +15,7 @@ int matrix_sum(std::vector<std::vector<int>> m) {
 };
 
 
-int print_matrix(std::vector<std::vector<int>> m) {
+void print_matrix(std::vector<std::vector<int>> m) {
     int sum = 0;
 
     for (int i = 0; i < m.size(); i++) {
@@ -25,7 +25,7 @@ int print_matrix(std::vector<std::vector<int>> m) {
         std::cout << '\n';
     };
 
-    return sum;
+    return;
 };
 
 
