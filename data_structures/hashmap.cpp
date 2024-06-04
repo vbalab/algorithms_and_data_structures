@@ -4,11 +4,6 @@
 #include <unordered_map>
 
 
-std::unordered_map<int, int> just_hashmap;
-// faster than std::map
-
-std::map<int, int> hashmap_with_sorted_keys;
-// uses red-black binary tree to sort keys
 
 
 // 2.
@@ -33,6 +28,13 @@ struct somestruct {
 
 int main() 
 {
+    // faster than std::map
+    std::unordered_map<int, int> just_hashmap;
+
+    // uses red-black binary tree to sort keys
+    std::map<int, int> hashmap_with_sorted_keys;
+
+
     // 1. use pointer, because pointer - uint64_t
     std::map<somestruct*, int> hashmap_with_pointer_key;
     // hashmap_with_pointer_key[somestruct{ "lol_town" }] = 1885; ????????????????
@@ -49,6 +51,18 @@ int main()
 
     std::set<int> set_is_a_hashmap = {6, 10, 5, 1}; // defining a set with values
     set_is_a_hashmap.insert(2);
+
+
+    for (auto& it: m) {
+        it.first; // key
+        it.second; // value
+    };
+
+    for (auto& [key, value]: m) {               // since c++17 you can use structured binding
+        if (value == 1)
+            return key;
+    };
+
 
     return 0;
 };
