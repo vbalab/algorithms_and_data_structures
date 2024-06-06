@@ -13,17 +13,15 @@ T iterative_binary_search(const std::vector<T>& vect, T x)
     int m;
     int r = static_cast<int>(vect.size());
 
-    while (l <= r)
-    {
+    while (l <= r) {
      m = l + (r - l) / 2;
 
-     if (vect[m] == x) {
+     if (vect[m] == x)
         return m;
-     } else if (x < vect[m]) {
+     else if (x < vect[m])
         r = m + 1;
-     } else {
+     else
         l = m - 1;
-     };
     };
 
     return -1;
@@ -35,14 +33,28 @@ T recursive_binary_search(const std::vector<T>& vect, T x, int l, int r)
 {
     int m = l + (r - l) / 2;
 
-    if (vect[m] == x) {
+    if (vect[m] == x)
         return m;
-    } else if (vect[m] < x) {
+    else if (vect[m] < x)
         return recursive_binary_search(vect, x, m + 1, r);
-    } else {
+    else
         return recursive_binary_search(vect, x, l, m - 1);
-    };
 
+    return -1;
+};
+
+
+template <typename T>
+int left_binary_search(long arr[], int l, int r, long target) {
+    int m = (l + r) >> 1;
+
+    if (arr[m] <= target & target < arr[m + 1])
+        return m;
+    else if (arr[m] < target)
+        return binary_search(arr, m + 1, r, target);
+    else
+        return binary_search(arr, l, m - 1, target);
+    
     return -1;
 };
 
