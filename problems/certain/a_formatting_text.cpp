@@ -38,28 +38,24 @@ void solve(std::string& s) {
             element += s[i++];
 
 
+        if (s[i] == ' ')
+            i++;
+
         if (s[i] == ',')
             element += s[i++];
 
-        if (s[i] == ' ') {
-            i++;
-
-            if (s[i] == ',') {
-                element += s[i++];
-                i++;
-            };
-        };
 
         if (line.size() + element.size() > len) {
             if (line.back() == ' ')
                 line.pop_back();
 
             std::cout << line << '\n';
-            
+
             line = "";
         };
 
-        line += element + ' ';
+        if (element.size() > 0)
+            line += element + ' ';
     };
 
     if (line.size() > 1) {
