@@ -3,7 +3,7 @@
 #include <unordered_set>
 
 
-int solve(std::vector<char> moves) {
+int solve(std::vector<char>& moves) {
     int diff = 0;
     int direction = 1;
     std::vector<int> diffs;
@@ -30,9 +30,12 @@ int solve(std::vector<char> moves) {
 
 
     for (int i = diffs.size() - 1; i >= 0; i--) {                                       // change of one of F to L,R
-        int change = directions[i] * (std::abs(diffs[i]) - 1);
-
         if (diffs[i] != 0) {
+            int change = directions[i] * (std::abs(diffs[i]) - 1);
+
+            for (int j = change; j <= -change; j += 2)
+                positions.insert(j - diffs[i]);
+
             for (int j = -change; j <= change; j += 2)
                 positions.insert(j - diffs[i]);
         };
