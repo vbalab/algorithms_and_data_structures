@@ -23,12 +23,12 @@ public:
     };
 
 
-    void insert(std::string word);
+    void insert(std::string& word);
     void preorder_traversal();
 };
 
 
-void PrefixTree::insert(std::string word) {
+void PrefixTree::insert(std::string& word) {
     for (PrefixTree* child: this->children) {
         if (child->c == word[0]) {
             child->number++;
