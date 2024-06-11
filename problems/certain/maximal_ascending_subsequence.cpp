@@ -9,14 +9,9 @@ public:
 
     int maximalAscendingSubsequence(std::vector<int>& v) {
         int max_n = 0;
-        int n;
 
-        for (int i = 0; i < v.size(); i++) {
-            n = maximalAscendingSubsequence_(v, i);
-
-            if (n > max_n)
-                max_n = n;
-        };
+        for (int i = 0; i < v.size(); i++)
+            max_n = std::max(maximalAscendingSubsequence_(v, i), max_n);
 
         return max_n;
     };
@@ -28,13 +23,10 @@ public:
 
 
         int max_n = 1;
-        int n;
 
         for (int i = i_ + 1; i < v.size(); i++) {
             if (v[i_] < v[i]) {
-                n = 1 + maximalAscendingSubsequence_(v, i);
-
-                max_n = std::max(n, max_n);
+                max_n = std::max(1 + maximalAscendingSubsequence_(v, i), max_n);
             };
         };
 
