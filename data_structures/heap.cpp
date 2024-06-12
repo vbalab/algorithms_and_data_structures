@@ -37,7 +37,7 @@ class HeapMin {
     };
 
     void siftDown(int i);
-    
+
     void siftUp(int i);
 
     void heapify(int i);
@@ -94,10 +94,12 @@ void HeapMin::siftDown(int i) {
 
     if (l < this->size && this->harr[l] < this->harr[i]) {
         std::swap(this->harr[l], this->harr[i]);
+
         this->siftDown(l);
     }
     else if (r < this->size && this->harr[r] < this->harr[i]) {
         std::swap(this->harr[r], this->harr[i]);
+
         this->siftDown(r);
     }
 
@@ -133,9 +135,7 @@ void HeapMin::insert(int val) {
     if (this->size < this->capacity) {
         this->harr[size] = val;
 
-        this->siftUp(this->size);
-
-        this->size++;
+        this->siftUp(this->size++);
     }
     else
         throw std::overflow_error("Heap overflow");
