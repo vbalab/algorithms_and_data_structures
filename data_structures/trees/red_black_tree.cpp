@@ -2,7 +2,7 @@
 
 
 /*
-AVL tree - self-balancing BST satisfying:
+RBT tree - self-balancing BST satisfying:
 1 - The root is black.
 2 - Every NIL (i.e. leafs - NULL nodes) is black.
 3 - The children of a red node are black.
