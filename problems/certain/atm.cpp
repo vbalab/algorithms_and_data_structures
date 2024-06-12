@@ -17,7 +17,7 @@ public:
 
         for (int b: banknotes) {
             if (sum - b < 0)
-                return __INT_MAX__ - 1;
+                continue;
             else if (sum - b == 0)
                 return 1;
             else
