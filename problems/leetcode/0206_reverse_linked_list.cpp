@@ -10,7 +10,7 @@ struct ListNode {
 };
 
 
-class Solution {
+class Solution_recursive {
 public:
     ListNode* tail;
 
@@ -41,6 +41,31 @@ public:
 };
 
 
+class Solution_loop {
+public:
+    ListNode* reverseList(ListNode* head) {
+        if (!head || !head->next)
+            return head;
+
+
+        ListNode* prev = head;
+        ListNode* next = head->next;
+        head->next = nullptr;
+
+        while (next) {
+            head = next;
+            next = head->next;
+
+            head->next = prev;
+
+            prev = head;
+        }
+
+        return head;
+    }
+};
+
+
 
 int main() {
     ListNode* head = new ListNode(1);
@@ -48,7 +73,7 @@ int main() {
     head->next->next = new ListNode(3);
 
 
-    Solution s;
+    Solution_loop s;
     head = s.reverseList(head);
 
     while (head) {
