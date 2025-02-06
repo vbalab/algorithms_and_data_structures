@@ -1,92 +1,63 @@
-#include <vector>
 #include <queue>
+#include <vector>
+#include <cstdint>
 #include <iostream>
 
+// class Solution {
+// public:
+//     int32_t longestOnes(const std::vector<int32_t>& nums, int32_t k) {
+//         std::queue<int32_t> spans;
 
-class SolutionBad {
-public:
-    int longestOnes(std::vector<int>& nums, int k) {
-        std::queue<int> q;
-        int size = nums.size();
-        int len;
-        int curr = 0;
-        int max = 0;
+//         int32_t max = 0;
+//         int32_t cur = 0;
 
+//         std::size_t i = 0;
 
-        for (int i = 0; i < size; i++) {
-            len = 0;
-            if (!k)
-                curr = 0;
+//         while (i < nums.size()) {
+//             int32_t span = 0;
+//             while (i < nums.size() && nums[i++] == 1) {
+//                 ++span;
+//             }
 
-            while (i < size && nums[i]) {
-                len++;
-                i++;
-            }
-            max = std::max(curr + len, max);
+//             spans.push(span);
+//             cur += span;
 
-            if (i < size && !nums[i] && k) {
-                len++;
+//             max = std::max(cur + static_cast<int32_t>(spans.size() - 1), max);
 
-                if (q.size() == k) {
-                    curr -= q.front();
-                    q.pop();
-                }
-            }
+//             if (spans.size() > k) {
+//                 cur -= spans.front();
+//                 spans.pop();
+//             }
+//         }
 
-            curr += len;
-            q.push(len);
-
-            max = std::max(curr, max);
-        }
-
-        return max;
-    }
-};
-
-
+//         return max;
+//     }
+// };
 
 class Solution {
 public:
-    int longestOnes(std::vector<int>& nums, int k) {
-        int max = 0;
-        int curr = 0;
-        int n_zeros = 0;
-        int l = 0;
-        int r = 0;
+    int32_t longestOnes(const std::vector<int32_t>& nums, int32_t k) {
+        int32_t max = 0;
 
-        for (int r = 0; r < nums.size(); r++) {
-            while (r < nums.size() && nums[r]) {
-                curr++;
-                r++;
-            }
+        int32_t l = 0;
+        int32_t n_zeros = 0;
 
-            if (r < nums.size() && !nums[r]) {
-                curr++;
-                n_zeros++;
+        for (int32_t r = 0; r < nums.size(); ++r) {
+            if (nums[r] == 0) {
+                ++n_zeros;
 
-                if (n_zeros > k) {
-                    while (nums[l]) {
-                        curr--;
-                        l++;
+                while (n_zeros > k) {
+                    if (nums[l] == 0) {
+                       --n_zeros; 
                     }
-                    n_zeros--;
-                    l++;
+
+                    ++l;
                 }
             }
 
-            max = std::max(curr, max);
+            max = std::max(max, r - l + 1);
         }
 
         return max;
     }
 };
-
-
-int main() {
-    std::vector<int> nums = { 0,0,1,1,0,0,1,1,1,0,1,1,0,0,0,1,1,1,1 };
-
-    Solution s;
-    std::cout << s.longestOnes(nums, 3) << '\n';
-
-    return 0;
-}
