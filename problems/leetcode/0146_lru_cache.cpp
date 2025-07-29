@@ -5,20 +5,20 @@
 #include <unordered_map>
 
 template <typename Key, typename Value>
-class LruCache {
+class LfuCache {
     struct Node {
         Key key;
         Value value;
     };
 
 public:
-    LruCache(size_t capacity) : capacity_(capacity) {}
+    LfuCache(size_t capacity) : capacity_(capacity) {}
 
     template <typename Val>
         requires std::is_constructible_v<Value, Val&&>
     void Insert(Key key, Val&& value) {
         if (map_.contains(key)) {
-            Update(key, std::forward<Val&&>(value));
+            Uplift(key, std::forward<Val&&>(value));
             return;
         }
 
@@ -36,13 +36,13 @@ public:
         if (!map_.contains(key)) {
             return std::nullopt;
         }
-        Update(key);
+        Uplift(key);
 
         return list_.front().value;
     }
 
 private:
-    void Update(Key& key) {
+    void Uplift(Key& key) {
         auto it = map_[key];
         list_.push_front(std::move(*it));
         map_[key] = list_.begin();
@@ -51,7 +51,7 @@ private:
 
     template <typename Val>
         requires std::is_constructible_v<Value, Val&&>
-    void Update(Key& key, Val&& value) {
+    void Uplift(Key& key, Val&& value) {
         auto it = map_[key];
         list_.erase(it);
 
@@ -65,9 +65,9 @@ private:
     size_t capacity_;
 };
 
-class LRUCache {
+class LFUCache {
 public:
-    LRUCache(int capacity) : cache_(capacity) {}
+    LFUCache(int capacity) : cache_(capacity) {}
 
     int get(int key) {
         if (auto val = cache_.Get(key)) {
@@ -80,11 +80,11 @@ public:
     void put(int key, int value) { cache_.Insert(key, value); }
 
 private:
-    LruCache<int, int> cache_;
+    LfuCache<int, int> cache_;
 };
 
 int main() {
-    LRUCache cache(2);
+    LFUCache cache(2);
     cache.put(1, 1);
     cache.put(2, 2);
     cache.put(3, 3);
